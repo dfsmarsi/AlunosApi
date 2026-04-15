@@ -29,44 +29,38 @@ namespace AlunosApi.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Age")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<int>("Idade")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Nome")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Alunos");
+                    b.ToTable("Alunos", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Email = "joao@example.com",
-                            Idade = 20,
-                            Nome = "João"
+                            Email = "joao@example.com"
                         },
                         new
                         {
                             Id = 2,
-                            Email = "braia@example.com",
-                            Idade = 22,
-                            Nome = "Braia"
+                            Email = "braia@example.com"
                         },
                         new
                         {
                             Id = 3,
-                            Email = "pedro@example.com",
-                            Idade = 19,
-                            Nome = "Pedro"
+                            Email = "pedro@example.com"
                         });
                 });
 #pragma warning restore 612, 618
