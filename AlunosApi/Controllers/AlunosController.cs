@@ -21,7 +21,7 @@ namespace AlunosApi.Controllers
             try
             {
                 var alunos = await _alunoService.GetAlunos();
-                return Ok(alunos);
+                return Ok(alunos.OrderBy(a => a.Nome));
             }
             catch (Exception)
             {

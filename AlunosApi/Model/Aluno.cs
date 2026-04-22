@@ -7,7 +7,7 @@ namespace AlunosApi.Model
         [Key]
         public int Id { get; set; }
         [Required]
-        [StringLength(100, MinimumLength = 5)]
+        [StringLength(100, MinimumLength = 3)]
         public string Nome { get; set; }
         [Required]
         [EmailAddress]
