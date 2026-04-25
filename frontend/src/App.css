@@ -1,0 +1,643 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f0f2f5;
+  font-family: 'Segoe UI', sans-serif;
+  color: #2d3748;
+}
+
+.aluno-container {
+  width: 100%;
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+/* ── Header ── */
+.aluno-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px 28px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 28px;
+}
+
+.aluno-header img {
+  height: 52px;
+  width: auto;
+}
+
+.aluno-header h3 {
+  flex: 1;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.btn-adicionar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-adicionar:hover {
+  background: #2563eb;
+}
+
+.btn-adicionar .icone {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* ── Card da tabela ── */
+.tabela-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* ── Tabela ── */
+.aluno-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.aluno-table thead {
+  background: #1e40af;
+  color: #ffffff;
+}
+
+.aluno-table thead th {
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+
+.aluno-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.15s;
+}
+
+.aluno-table tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.aluno-table tbody tr:hover {
+  background: #eff6ff;
+}
+
+.aluno-table tbody td {
+  padding: 13px 18px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.aluno-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* ── Botões de ação ── */
+.acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icone {
+  border: none;
+  border-radius: 6px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-icone:active {
+  transform: scale(0.92);
+}
+
+.btn-editar {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.btn-editar:hover {
+  background: #bfdbfe;
+}
+
+.btn-excluir {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.btn-excluir:hover {
+  background: #fecaca;
+}
+
+/* ── Modal ── */
+.modal-titulo {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1a202c;
+}
+
+.campo-grupo {
+  margin-bottom: 14px;
+}
+
+.campo-grupo label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+.campo-grupo input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.campo-grupo input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.campo-grupo input.is-invalid {
+  border-color: #ef4444;
+}
+
+.campo-grupo input:read-only {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
+.erro-campo {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.erro-api {
+  background: #fee2e2;
+  color: #dc2626;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+}
+
+.modal-footer-acoes {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-gravar {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 22px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-gravar:hover {
+  background: #2563eb;
+}
+
+.btn-cancelar {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  padding: 9px 22px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-cancelar:hover {
+  background: #e5e7eb;
+}
+
+/* ── Responsivo ── */
+@media (max-width: 600px) {
+  .aluno-container {
+    margin: 16px auto;
+    padding: 0 10px;
+  }
+
+  .aluno-header {
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .aluno-header img {
+    height: 38px;
+  }
+
+  .aluno-header h3 {
+    font-size: 1.1rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .btn-adicionar {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /* Tabela vira cards empilhados */
+  .aluno-table thead {
+    display: none;
+  }
+
+  .aluno-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 12px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .aluno-table tbody tr:nth-child(even) {
+    background: #fff;
+  }
+
+  .aluno-table tbody td {
+    padding: 4px 0;
+    font-size: 0.9rem;
+    border: none;
+    display: flex;
+    gap: 6px;
+  }
+
+  .aluno-table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6b7280;
+    min-width: 56px;
+  }
+
+  .tabela-card {
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .acoes {
+    margin-top: 6px;
+  }
+
+  .modal-footer-acoes {
+    flex-direction: column-reverse;
+  }
+
+  .btn-gravar,
+  .btn-cancelar {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* ══════════════════════════════════════════
+   Auth (Login / Cadastro)
+══════════════════════════════════════════ */
+.auth-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  padding: 24px 16px;
+}
+
+.auth-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.auth-logo img {
+  height: 56px;
+  margin-bottom: 12px;
+}
+
+.auth-logo h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 4px;
+}
+
+.auth-logo p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.btn-auth {
+  width: 100%;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.btn-auth:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.btn-auth:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.auth-link a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+/* ══════════════════════════════════════════
+   Dashboard — Navbar
+══════════════════════════════════════════ */
+.dashboard-wrapper {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.dashboard-nav {
+  background: #1e40af;
+  padding: 0 28px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+}
+
+.dashboard-nav-brand img {
+  height: 34px;
+  filter: brightness(0) invert(1);
+}
+
+.dashboard-nav-brand span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.dashboard-nav-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #bfdbfe;
+  font-size: 0.88rem;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-sair {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 7px;
+  padding: 6px 16px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-sair:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Stats ── */
+.dashboard-content {
+  max-width: 960px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.stats-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 180px;
+}
+
+.stat-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-valor {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e40af;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* ── Toolbar (busca + botão) ── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.busca-form {
+  display: flex;
+  flex: 1;
+  max-width: 360px;
+  gap: 0;
+}
+
+.busca-input {
+  flex: 1;
+  padding: 9px 14px;
+  border: 1px solid #d1d5db;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  font-size: 0.93rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.busca-input:focus {
+  border-color: #3b82f6;
+}
+
+.btn-buscar {
+  background: #e5e7eb;
+  border: 1px solid #d1d5db;
+  border-radius: 0 8px 8px 0;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.btn-buscar:hover:not(:disabled) {
+  background: #d1d5db;
+}
+
+.toolbar .btn-adicionar {
+  margin-left: auto;
+}
+
+/* ── Tabela vazia ── */
+.tabela-vazia {
+  text-align: center;
+  padding: 32px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* ── Responsivo dashboard ── */
+@media (max-width: 600px) {
+  .dashboard-nav {
+    padding: 0 14px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .dashboard-nav-brand span {
+    font-size: 0.95rem;
+  }
+
+  .user-badge {
+    max-width: 140px;
+    font-size: 0.8rem;
+  }
+
+  .dashboard-content {
+    margin: 16px auto;
+    padding: 0 10px;
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .busca-form {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .toolbar .btn-adicionar {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .auth-card {
+    padding: 28px 20px;
+  }
+}
