@@ -17,12 +17,12 @@ namespace AlunosApi.Controllers
         private readonly IConfiguration _configuration;
         private readonly IAuthenticate _authentication;
 
-        public AccountController(IConfiguration configuration, IAuthenticate authrntication)
+        public AccountController(IConfiguration configuration, IAuthenticate authentication)
         {
             _configuration = configuration ??
                 throw new ArgumentNullException(nameof(configuration));
-            _authentication = authrntication ??
-                throw new ArgumentNullException(nameof(authrntication));
+            _authentication = authentication ??
+                throw new ArgumentNullException(nameof(authentication));
         }
 
         [HttpPost("CreateUser")]

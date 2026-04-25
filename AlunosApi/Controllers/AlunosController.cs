@@ -85,6 +85,9 @@ namespace AlunosApi.Controllers
         [HttpPut("{id:int}")]
         public async Task<ActionResult<Aluno>> UpdateAluno(int id, Aluno aluno)
         {
+            if (id != aluno.Id)
+                return BadRequest("O ID da URL não corresponde ao ID do aluno.");
+
             try
             {
                 var existingAluno = await _alunoService.GetAlunoById(id);
@@ -92,8 +95,8 @@ namespace AlunosApi.Controllers
                 {
                     return NotFound();
                 }
-                await _alunoService.UpdateAluno(aluno);
-                return Ok(aluno);
+                var updated = await _alunoService.UpdateAluno(aluno);
+                return Ok(updated);
             }
             catch (Exception)
             {
